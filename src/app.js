@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
-import { getDB, saveDB } from './utils/db/index.js';
-import { v4 } from 'uuid';
+import { general } from './services/general/index.js';
+import { createBlog } from './services/blogs/create-blog.js';
+import { getManyBlog } from './services/blogs/get-many-blog.js';
 
 const prefix = '/api';
 
@@ -8,40 +9,13 @@ export async function build () {
   // initialize fastify
   const fastify = Fastify({ logger: true });
 
-  fastify.get(prefix, async (request, reply) => {
-    return { success: true };
-  });
+  fastify.get(prefix, general);
 
   // create blog
-  fastify.post(`${prefix}/blog`, async (request, reply) => {
-    const { body, username } = request;
-    const { title, description } = body;
-    const db = await getDB();
+  fastify.post(`${prefix}/blog`, createBlog);
 
-    const id = v4();
-
-    // if (!username){
-    //   return reply.badRequest();
-    // }
-
-    const blog = {
-      title,
-      description,
-      username,
-      comments: [],
-      createdDate: new Date().getTime(),
-      updatedDate: new Date().getTime()
-    };
-
-    db.blogs[id] = blog;
-
-    await saveDB(db);
-
-    return {
-      id,
-      ...blog
-    };
-  });
+  // get many blog
+  fastify.get(`${prefix}/blog`, getManyBlog);
 
   return fastify;
 }
