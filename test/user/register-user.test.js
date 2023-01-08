@@ -23,7 +23,7 @@ describe('Register a user should work', async () => {
     lastName: chance.last()
   };
 
-  it('Should return the user that was created with a new user', async () => {
+  it('Should return the user that was created a new user', async () => {
     const response = await app.inject({
       method: 'POST',
       url: `${prefix}/register`,
@@ -42,6 +42,7 @@ describe('Register a user should work', async () => {
     result.username.must.be.equal(newUser.username);
     result.firstName.must.be.equal(newUser.firstName);
     result.lastName.must.be.equal(newUser.lastName);
+
     // expect createdDate and updatedDate is not null
     result.createdDate.must.not.be.null();
     result.updatedDate.must.not.be.null();
