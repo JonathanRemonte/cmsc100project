@@ -48,21 +48,21 @@ export async function build () {
     exposeRoute: true
   };
 
-    // makes every 404 to point to our Web app frontend
-    fastify.setNotFoundHandler(function (_request, reply) {
-      // bad practice but force 404 to 200
-      reply.statusCode = 200;
-      // send the public/index.html
-      reply.sendFile('index.html');
-    });
+  // makes every 404 to point to our Web app frontend
+  fastify.setNotFoundHandler(function (_request, reply) {
+    // bad practice but force 404 to 200
+    reply.statusCode = 200;
+    // send the public/index.html
+    reply.sendFile('index.html');
+  });
 
-    fastify.register(stat, {
-      root: `${process.cwd()}/src/public`,
-      preCompressed: true
-    });
+  fastify.register(stat, {
+    root: `${process.cwd()}/src/public`,
+    preCompressed: true
+  });
 
-    fastify.register(swagger, swaggerOptions);
-    fastify.register(openAPIGlue, openAPIGlueOptions);
+  fastify.register(swagger, swaggerOptions);
+  fastify.register(openAPIGlue, openAPIGlueOptions);
 
   return fastify;
 }
