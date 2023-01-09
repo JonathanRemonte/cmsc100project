@@ -1,10 +1,18 @@
 import { getDB, saveDB } from '../../utils/db/index.js';
 
 export const updateBlog = async (request, reply) => {
-  const { params, body } = request;
+  const { params, body, username } = request;
   const { blogId: id } = params;
-  const { title, description, username, comments } = body;
+  const { title, description, comments } = body;
   const db = await getDB();
+
+  if (!username) {
+    return reply.badRequest();
+  }
+
+  if (db.blogs[id].username !== username) {
+    return reply.forbidden('You are not the owner of the blog');
+  }
 
   db.blogs[id].title = title || db.blogs[id].title;
   db.blogs[id].description = description || db.blogs[id].description;
