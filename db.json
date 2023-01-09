@@ -6,72 +6,8 @@
       "lastName": "remonte",
       "createdDate": 1673027259439,
       "updatedDate": 1673027259439
-    },
-    "ut@example.com": {
-      "hashedPassword": "$2b$10$yc5lnnlu13Q/A4QcHdcy5e5.HWU5.SAeO2rHZBSlQmQXDyU.rBBnq",
-      "firstName": "Lula",
-      "lastName": "Bellini",
-      "createdDate": 1673196887240,
-      "updatedDate": 1673196887240
-    },
-    "haofeju@example.com": {
-      "hashedPassword": "$2b$10$Yy8GhAnnfN/hX0Ug6B8zOOrZ2QeaD70CiPpnnUDziLMi8ry2sbIw.",
-      "firstName": "Edward",
-      "lastName": "Barbetti",
-      "createdDate": 1673196888046,
-      "updatedDate": 1673196888046
-    },
-    "gebra@example.com": {
-      "hashedPassword": "$2b$10$i/SsJRnacKSwb1/4TDWagek9QYAQ8M.UNzGuIshnTAoEOjTSvC5yO",
-      "firstName": "Jeff",
-      "lastName": "O'neill",
-      "createdDate": 1673196892044,
-      "updatedDate": 1673196892044
     }
   },
   "blogs": {
-    "04e9e658-fdd4-4912-bcd9-d7d7a94a16ba": {
-      "title": "New Blog",
-      "description": "Some description",
-      "comments": [],
-      "createdDate": 1673196886027,
-      "updatedDate": 1673196886027
-    },
-    "874d0cbb-83c2-4057-a60b-067cfe0d6b39": {
-      "title": "New Blog 2",
-      "description": "Some description 2",
-      "comments": [],
-      "createdDate": 1673196886122,
-      "updatedDate": 1673196886122
-    },
-    "07301df5-fd0d-44b5-bc73-da4f7020fd7a": {
-      "title": "New Blog for get",
-      "description": "Some description",
-      "comments": [],
-      "createdDate": 1673196886424,
-      "updatedDate": 1673196886424
-    },
-    "65c74f8f-1e8e-45aa-aec7-b535a12b6101": {
-      "title": "New Blog for update",
-      "description": "Some description 2",
-      "comments": [],
-      "createdDate": 1673196886736,
-      "updatedDate": 1673196886826
-    },
-    "330dc99b-7443-47d3-8e7a-eb335ff8427b": {
-      "title": "New Blog for update 2",
-      "description": "Some description",
-      "comments": [],
-      "createdDate": 1673196886921,
-      "updatedDate": 1673196886922
-    },
-    "ab658d50-79f8-4052-a9a7-ed77f7b557e5": {
-      "title": "New Blog for get",
-      "description": "Some description 2",
-      "comments": [],
-      "createdDate": 1673196886925,
-      "updatedDate": 1673196886927
-    }
-  },
-  "test": 1673196875530
+  }
 }
