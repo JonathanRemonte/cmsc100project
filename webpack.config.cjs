@@ -29,6 +29,7 @@ module.exports = function () {
         ]
       }),
       new HtmlWebpackPlugin({
+        title: 'App',
         template: 'src/frontend/index.html',
         cache: false,
         inject: 'body',
