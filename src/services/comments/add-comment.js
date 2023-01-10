@@ -2,7 +2,8 @@ import { getDB, saveDB } from '../../utils/db/index.js';
 import { v4 } from 'uuid';
 
 export const addComment = async (request, reply) => {
-  const { body, username } = request;
+  const { params, body, username } = request;
+  const { blogId } = params;
   const { description } = body;
   const db = await getDB();
 
@@ -20,7 +21,7 @@ export const addComment = async (request, reply) => {
     updatedDate: new Date().getTime()
   };
 
-  db.comments[id] = comment;
+  db.blogs[blogId].comments[id] = comment;
 
   await saveDB(db);
 

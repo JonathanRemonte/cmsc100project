@@ -1,13 +1,28 @@
 {
   "users": {
     "jonathanremonte": {
-      "hashedPassword": "$2b$10$Bcke5R7VxUU8VTi3RjNjW.Y4cAgy6bEAnPTVz7PuLaJIuXhcP10qO",
-      "firstName": "jonathan",
-      "lastName": "remonte",
+      "hashedPassword": "$2b$10$AIuUNqPN0sGn25fJPaVjKOP3zn9Fhspxx.zAYwX.7gERIQOpjhfb.",
+      "firstName": "Jonathan Andre",
+      "lastName": "Remonte",
       "createdDate": 1673027259439,
-      "updatedDate": 1673027259439
+      "updatedDate": 1673346698962
     }
   },
   "blogs": {
+    "1b61a07e-6cab-4b5f-b51d-160d067aa06f": {
+      "title": "this is a blog title",
+      "description": "this is a blog body",
+      "username": "jonathanremonte",
+      "comments": {
+        "1646e100-c922-4c2f-96e6-8e82dbada210": {
+          "description": "wow cool share thanks for posting",
+          "username": "jonathanremonte",
+          "createdDate": 1673352888430,
+          "updatedDate": 1673352888430
+        }
+      },
+      "createdDate": 1673346430243,
+      "updatedDate": 1673346430243
+    }
   }
 }

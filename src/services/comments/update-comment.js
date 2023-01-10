@@ -2,7 +2,7 @@ import { getDB, saveDB } from '../../utils/db/index.js';
 
 export const updateComment = async (request, reply) => {
   const { params, body, username } = request;
-  const { commentId: id } = params;
+  const { commentId: id, blogId: blogId } = params;
   const { description } = body;
   const db = await getDB();
 
@@ -10,17 +10,17 @@ export const updateComment = async (request, reply) => {
     return reply.badRequest();
   }
 
-  if (db.comments[id].username !== username) {
-    return reply.forbidden('You are not the owner of the blog');
+  if (db.blogs[blogId].comments[id].username !== username) {
+    return reply.forbidden('You are not the owner of the comment');
   }
 
-  db.comments[id].description = description || db.comments[id].description;
-  db.comments[id].updatedDate = new Date().getTime();
+  db.blogs[blogId].comments[id].description = description || db.comments[id].description;
+  db.blogs[blogId].comments[id].updatedDate = new Date().getTime();
 
   await saveDB(db);
 
   return {
     id,
-    ...db.comments[id]
+    ...db.blogs[blogId].comments[id]
   };
 };

@@ -1,7 +1,8 @@
 import { getDB } from '../../utils/db/index.js';
 
 export const getManyComment = async (request, reply) => {
-  const { query, username } = request;
+  const { query, params, username } = request;
+  const { blogId: blogId } = params;
   const { limit = 5 } = query;
   const db = await getDB();
 
@@ -13,7 +14,7 @@ export const getManyComment = async (request, reply) => {
   const list = [];
 
   const comments = Object
-    .entries(db.comments)
+    .entries(db.blogs[blogId].comments)
     .map(function ([id, comment]) {
       return {
         id,
