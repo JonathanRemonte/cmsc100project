@@ -84,7 +84,7 @@ export const schemas = {
         type: 'string'
       },
       comments: {
-        type: 'array',
+        type: 'object',
         items: {
           type: 'object',
           properties: {
