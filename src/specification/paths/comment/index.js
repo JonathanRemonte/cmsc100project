@@ -1,11 +1,14 @@
 export const comment = {
-    '/comment/:commentId': {
+    '/blog/:blogId/comment/:commentId': {
       get: {
         summary: 'Get a comment',
         operationId: 'getComment',
         parameters: [
           {
             $ref: '#/components/parameters/CommentParameterId'
+          },
+          {
+            $ref: '#/components/parameters/BlogParameterId'
           }
         ],
         responses: {
@@ -26,12 +29,49 @@ export const comment = {
           }
         ]
       },
+      delete: {
+        summary: 'Delete a comment',
+        operationId: 'deleteComment',
+        parameters: [
+          {
+            $ref: '#/components/parameters/CommentParameterId'
+          },
+          {
+            $ref: '#/components/parameters/BlogParameterId'
+          }
+        ],
+        responses: {
+          200: {
+            description: 'successful response',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    success: {
+                      type: 'boolean'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        security: [
+          {
+            cookieAuth: []
+          }
+        ]
+      },
       put: {
         summary: 'Update a comment',
         operationId: 'updateComment',
         parameters: [
           {
             $ref: '#/components/parameters/CommentParameterId'
+          },
+          {
+            $ref: '#/components/parameters/BlogParameterId'
           }
         ],
         requestBody: {
@@ -62,43 +102,17 @@ export const comment = {
             cookieAuth: []
           }
         ]
-      },
-      delete: {
-        summary: 'Delete a comment',
-        operationId: 'deleteComment',
-        parameters: [
-          {
-            $ref: '#/components/parameters/CommentParameterId'
-          }
-        ],
-        responses: {
-          200: {
-            description: 'successful response',
-            content: {
-              'application/json': {
-                schema: {
-                  type: 'object',
-                  properties: {
-                    success: {
-                      type: 'boolean'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        security: [
-          {
-            cookieAuth: []
-          }
-        ]
       }
     },
-    '/comment': {
+    '/blog/:blogId/comment': {
       post: {
-        summary: 'Create a comment',
-        operationId: 'createComment',
+        summary: 'Add a comment',
+        operationId: 'addComment',
+        parameters: [
+          {
+            $ref: '#/components/parameters/BlogParameterId'
+          }
+        ],
         requestBody: {
           description: 'The request body for comment',
           content: {
@@ -138,7 +152,11 @@ export const comment = {
             description: 'The number of items returned',
             schema: {
               type: 'number'
-            }
+            },
+          },
+          {
+            $ref: '#/components/parameters/BlogParameterId'
+            
           }
         ],
         responses: {
