@@ -14,7 +14,7 @@ export const blog = {
           content: {
             'application/json': {
               schema: {
-                $ref: '#/components/schemas/BlogObject'
+                $ref: '#/components/schemas/ViewBlogObject'
               }
             }
           }
@@ -149,7 +149,7 @@ export const blog = {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#/components/schemas/BlogObject'
+                  $ref: '#/components/schemas/ViewBlogObject'
                 }
               }
             }
