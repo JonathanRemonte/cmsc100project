@@ -39,6 +39,7 @@ class Page extends LitPage {
         return this.setErrorMessage(await response.json(), response.status);
       } else {
         this.blog = await response.json();
+        this.comments = this.blog.comments;
       }
     } catch (error) {
       return this.setErrorMessage(error, 404);
@@ -67,6 +68,65 @@ class Page extends LitPage {
       return this.setErrorMessage(error, 404);
     }
   }
+
+  async deleteBlog (event) {
+    event.preventDefault();
+    // we get the data from the detail being sent by the blog-component
+    const { detail } = event;
+
+    const response = await window.fetch(`/api/blog/${this.blog.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(detail)
+    });
+    try {
+      if (response.status !== 200) {
+        return this.setErrorMessage(await response.json(), response.status);
+      } else {
+        this.blog = await response.json();
+        changeUrl('/blogs');
+      }
+    } catch (error) {
+      return this.setErrorMessage(error, 404);
+    }
+  }
+
+  async addComment (event) {
+    event.preventDefault();
+    // we get the data from the detail being sent by the blog-component
+    const { detail } = event;
+
+    const response = await window.fetch(`/api/blog/${detail.id}/comment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ description: detail.description })
+    });
+    try {
+      const data = await response.json();
+
+      this.comments = [
+        data,
+        ...this.comments
+      ];
+
+      location.reload();
+
+      console.log(this.comments);
+    } catch (error) {
+      return this.setErrorMessage(error, 404);
+    }
+  }
+
+  async setErrorMessage (data, status) {
+    const { message, error } = data;
+    this.errorMessage = `HTTP Code: ${status} - ${error} - ${message}`;
+    await state.set('user-is-logged-in', false);
+  }
+  
 
   async setErrorMessage (data, status) {
     const { message, error } = data;
