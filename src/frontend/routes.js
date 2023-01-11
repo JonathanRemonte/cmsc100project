@@ -32,6 +32,26 @@ export const routes = {
       () => import('./pages/page-login/index.js')
     ]
   },
+  '/register': {
+    render: () => html`
+      <page-register></page-register>
+    `,
+    // runs all scripts, if any one of the functions in the list fails
+    preRender: [
+      redirectIfLoggedIn,
+      () => import('./pages/page-register/index.js')
+    ]
+  },
+  '/user': {
+    render: () => html`
+      <page-user></page-user>
+    `,
+    // runs all scripts, if any one of the functions in the list fails
+    preRender: [
+      redirectIfLoggedOut,
+      () => import('./pages/page-user/index.js')
+    ]
+  },
   '/blogs': {
     render: () => html`
       <page-blogs></page-blogs>
