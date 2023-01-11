@@ -17,6 +17,7 @@ export function template () {
           Login
         </a>
       `}
+      <input type="button" value="Back" onclick="history.back()">
     </nav> 
   </header>`;
 }
