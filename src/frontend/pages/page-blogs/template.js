@@ -14,6 +14,10 @@ export function template () {
       }
     </style>
 
+    <h3><a href="/user">
+      View User Info...
+    </a></h3>
+
     <h1>
       Create New Blog
     </h1>
@@ -23,6 +27,7 @@ export function template () {
     <h1>
       Blogs
     </h1>
+    
     ${this.errorMessage
       // if this is an errorMessage
       ? html`

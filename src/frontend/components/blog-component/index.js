@@ -22,7 +22,6 @@ class Page extends LitNoShadow {
     const detail = {
       title: form.title.value,
       description: form.description.value
-    //   isDone: form.isDone.checked || false
     };
 
     // we want to dispatch this event
