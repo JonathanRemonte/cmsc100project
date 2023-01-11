@@ -7,6 +7,7 @@ import { updateBlog } from './blogs/update-blog.js';
 import { registerUser } from './user/register-user.js';
 import { login } from './user/login.js';
 import { logout } from './user/logout.js';
+import { authCheck } from './user/auth-check.js';
 import { updateUser } from './user/update-user.js';
 import { getUser } from './user/get-user.js';
 import { changePassword } from './user/change-password.js';
@@ -32,6 +33,7 @@ export class Service {
   registerUser = registerUser
   login = login
   logout = logout
+  authCheck = authCheck
   updateUser = updateUser
   getUser = getUser
   changePassword = changePassword
