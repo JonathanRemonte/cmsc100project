@@ -14,14 +14,16 @@ export const blog = {
           content: {
             'application/json': {
               schema: {
-                $ref: '#/components/schemas/BlogObject'
+                $ref: '#/components/schemas/ViewBlogObject'
               }
             }
           }
         }
       },
       security: [
-        {}
+        {
+          cookieAuth: []
+        }
       ]
     },
     put: {
@@ -56,7 +58,9 @@ export const blog = {
         }
       },
       security: [
-        {}
+        {
+          cookieAuth: []
+        }
       ]
     },
     delete: {
@@ -85,7 +89,9 @@ export const blog = {
         }
       },
       security: [
-        {}
+        {
+          cookieAuth: []
+        }
       ]
     }
   },
@@ -117,7 +123,9 @@ export const blog = {
         }
       },
       security: [
-        {}
+        {
+          cookieAuth: []
+        }
       ]
     },
     get: {
@@ -141,7 +149,7 @@ export const blog = {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#/components/schemas/BlogObject'
+                  $ref: '#/components/schemas/ViewBlogObject'
                 }
               }
             }
@@ -149,7 +157,9 @@ export const blog = {
         }
       },
       security: [
-        {}
+        {
+          cookieAuth: []
+        }
       ]
     }
   }

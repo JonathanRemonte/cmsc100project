@@ -8,6 +8,14 @@ import { registerUser } from './user/register-user.js';
 import { login } from './user/login.js';
 import { logout } from './user/logout.js';
 import { authCheck } from './user/auth-check.js';
+import { updateUser } from './user/update-user.js';
+import { getUser } from './user/get-user.js';
+import { changePassword } from './user/change-password.js';
+import { addComment } from './comments/add-comment.js';
+import { deleteComment } from './comments/delete-comment.js';
+import { updateComment } from './comments/update-comment.js';
+import { getComment } from './comments/get-comment.js';
+import { getManyComment } from './comments/get-many-comment.js';
 
 export class Service {
   constructor (app) {
@@ -26,4 +34,12 @@ export class Service {
   login = login
   logout = logout
   authCheck = authCheck
+  updateUser = updateUser
+  getUser = getUser
+  changePassword = changePassword
+  addComment = addComment
+  deleteComment = deleteComment
+  updateComment = updateComment
+  getComment = getComment
+  getManyComment = getManyComment
 }

@@ -11,8 +11,28 @@ export const schemas = {
       description: {
         type: 'string'
       },
-      comments: {
+      username: {
         type: 'string'
+      },
+      comments: {
+        type: 'object',
+        properties: {
+          id: {
+            type: 'string'
+          },
+          description: {
+            type: 'string'
+          },
+          username: {
+            type: 'string'
+          },
+          createdDate: {
+            type: 'number'
+          },
+          updatedDate: {
+            type: 'number'
+          }
+        }
       },
       createdDate: {
         type: 'number'
@@ -43,6 +63,91 @@ export const schemas = {
       title: {
         type: 'string'
       },
+      description: {
+        type: 'string'
+      }
+    }
+  },
+  ViewBlogObject: {
+    type: 'object',
+    properties: {
+      id: {
+        type: 'string'
+      },
+      title: {
+        type: 'string'
+      },
+      description: {
+        type: 'string'
+      },
+      username: {
+        type: 'string'
+      },
+      comments: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string'
+            },
+            description: {
+              type: 'string'
+            },
+            username: {
+              type: 'string'
+            },
+            createdDate: {
+              type: 'number'
+            },
+            updatedDate: {
+              type: 'number'
+            }
+          }
+        }
+      },
+      createdDate: {
+        type: 'number'
+      },
+      updatedDate: {
+        type: 'number'
+      }
+    }
+  },
+  CommentObject: {
+    type: 'object',
+    properties: {
+      id: {
+        type: 'string'
+      },
+      description: {
+        type: 'string'
+      },
+      username: {
+        type: 'string'
+      },
+      createdDate: {
+        type: 'number'
+      },
+      updatedDate: {
+        type: 'number'
+      }
+    }
+  },
+  CommentRequestRequiredObject: {
+    type: 'object',
+    properties: {
+      description: {
+        type: 'string'
+      }
+    },
+    required: [
+      'description'
+    ]
+  },
+  CommentRequestObject: {
+    type: 'object',
+    properties: {
       description: {
         type: 'string'
       }
@@ -101,6 +206,39 @@ export const schemas = {
     properties: {
       success: {
         type: 'boolean'
+      }
+    }
+  },
+  UserRequestObject: {
+    type: 'object',
+    properties: {
+      username: {
+        type: 'string'
+      },
+      firstName: {
+        type: 'string'
+      },
+      lastName: {
+        type: 'string'
+      }
+    }
+  },
+  ChangePasswordObject: {
+    type: 'object',
+    properties: {
+      password: {
+        type: 'string'
+      }
+    }
+  },
+  ChangeUserRequestObject: {
+    type: 'object',
+    properties: {
+      firstName: {
+        type: 'string'
+      },
+      lastName: {
+        type: 'string'
       }
     }
   }

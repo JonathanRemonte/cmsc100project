@@ -8,8 +8,8 @@
     "start": "npm-run-all --parallel nodemon webpack",
     "nodemon": "nodemon src/index --ignore db.json",
     "semistandard": "semistandard --fix",
-    "tap": "c8 --lines 80 --functions 80 --branches 80 --statements 80 --check-coverage --per-file tap test/**/*.test.js --no-coverage",
-    "test": "npm run semistandard && npm run tap",
+    "tap": "c8 --lines 80 --functions 80 --branches 80 --statements 80 --check-coverage --per-file tap test/**/**/*.test.js --no-coverage",
+    "test": "npm run semistandard && npm run tap"
     "webpack": "npx webpack -c webpack.dev.cjs --watch",
     "webpack:build": "npx webpack -c webpack.dev.cjs",
     "webpack:build:production": "npx webpack -c webpack.prod.cjs"

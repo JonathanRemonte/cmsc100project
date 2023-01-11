@@ -1,9 +1,10 @@
 import { getDB, saveDB } from '../../utils/db/index.js';
 import { v4 } from 'uuid';
 
-export const createBlog = async (request, reply) => {
-  const { body, username } = request;
-  const { title, description } = body;
+export const addComment = async (request, reply) => {
+  const { params, body, username } = request;
+  const { blogId } = params;
+  const { description } = body;
   const db = await getDB();
 
   const id = v4();
@@ -13,21 +14,19 @@ export const createBlog = async (request, reply) => {
     return reply.badRequest();
   }
 
-  const blog = {
-    title,
+  const comment = {
     description,
     username,
-    comments: {},
     createdDate: new Date().getTime(),
     updatedDate: new Date().getTime()
   };
 
-  db.blogs[id] = blog;
+  db.blogs[blogId].comments[id] = comment;
 
   await saveDB(db);
 
   return {
     id,
-    ...blog
+    ...comment
   };
 };

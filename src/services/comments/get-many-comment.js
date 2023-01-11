@@ -1,7 +1,8 @@
 import { getDB } from '../../utils/db/index.js';
 
-export const getManyBlog = async (request, reply) => {
-  const { query, username } = request;
+export const getManyComment = async (request, reply) => {
+  const { query, params, username } = request;
+  const { blogId: blogId } = params;
   const { limit = 5 } = query;
   const db = await getDB();
 
@@ -12,22 +13,8 @@ export const getManyBlog = async (request, reply) => {
 
   const list = [];
 
-  const blogs = Object
-    .entries(db.blogs)
-    .map(function ([id, blog]) {
-      return {
-        id,
-        ...blog
-      };
-    })
-    .sort(function (blog1, blog2) {
-      return blog2.createdDate - blog1.createdDate;
-    })
-    .filter((blog) => (username === blog.username));
-
-  for (const blog of blogs) {
-    const comments = Object
-    .entries(blog.comments)
+  const comments = Object
+    .entries(db.blogs[blogId].comments)
     .map(function ([id, comment]) {
       return {
         id,
@@ -39,9 +26,8 @@ export const getManyBlog = async (request, reply) => {
     })
     .filter((comment) => (username === comment.username));
 
-    blog.comments = comments
-    
-    list.push(blog);
+  for (const comment of comments) {
+    list.push(comment);
     if (list.length >= limit) {
       break;
     }

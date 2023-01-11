@@ -1,8 +1,8 @@
 import { getDB, saveDB } from '../../utils/db/index.js';
 
-export const deleteBlog = async (request, reply) => {
+export const deleteComment = async (request, reply) => {
   const { params, username } = request;
-  const { blogId: id } = params;
+  const { commentId: id, blogId: blogId } = params;
   const db = await getDB();
 
   // check if there is username (meaning logged in)
@@ -10,11 +10,11 @@ export const deleteBlog = async (request, reply) => {
     return reply.badRequest();
   }
 
-  if (db.blogs[id].username !== username) {
-    return reply.forbidden('You are not the owner of the blog');
+  if (db.blogs[blogId].comments[id].username !== username) {
+    return reply.forbidden('You are not the owner of the comment');
   }
 
-  delete db.blogs[id];
+  delete db.blogs[blogId].comments[id];
 
   await saveDB(db);
 
